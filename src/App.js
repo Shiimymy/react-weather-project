@@ -6,12 +6,12 @@ export default function App() {
     <div className="App">
       <div class="container">
         <Weather />
-        <footer>
+      </div>
+      <footer>
           <p>
-            Coded by <a href="https://deft-banoffee-8f140b.netlify.app/" target="_blank" rel="noreferrer noopener">Eugénie BvN</a>, and open source on <a href="https://github.com/Shiimymy/react-weather-project" target="_blank" rel="noreferrer noopener">Github</a>
+            Coded by <a href="https://deft-banoffee-8f140b.netlify.app/" target="_blank" rel="noreferrer noopener" id="infoLinks">Eugénie BvN</a>, and open source on <a href="https://github.com/Shiimymy/react-weather-project" target="_blank" rel="noreferrer noopener" id="infoLinks">Github</a>
           </p>
         </footer>
-      </div>
     </div>
   );
 }

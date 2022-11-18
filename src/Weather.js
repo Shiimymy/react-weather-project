@@ -35,7 +35,7 @@ export default function Weather(){
                 <button type="button" id="currentLocation">
                     Current Location Weather
                 </button>
-                <div id="todayDate">Friday</div>
+                <div id="todayDate">Friday, 11:37</div>
                 <h2>
                     {" "}
                     ⛅ <br />
