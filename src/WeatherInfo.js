@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate.js";
+import WeatherTemperature from "./WeatherTemperature.js"
 
 export default function WeatherInfo (props) {
     return (
@@ -13,8 +14,7 @@ export default function WeatherInfo (props) {
                 {" "}
                 <img src={props.data.iconUrl} alt="SheCodes API icons" id="todayIcon"/>
                 <p>{props.data.description}</p>
-                <span id="todayTemp">{props.data.temperature}</span>
-                °C
+                <WeatherTemperature celsius={props.data.temperature}/>
             </h2>
             <h6>
                 Humidity : <span id="humidity">{props.data.humidity}</span> % | Wind :{" "}
