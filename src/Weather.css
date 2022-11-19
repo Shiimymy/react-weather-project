@@ -98,3 +98,7 @@ footer {
 #todayDate {
     font-size: 20px;
 }
+
+#todayIcon {
+    width: 170px;
+}

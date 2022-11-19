@@ -1,5 +1,5 @@
 import React from "react";
-import FormattedDate from "./FormattedDate.js"
+import FormattedDate from "./FormattedDate.js";
 
 export default function WeatherInfo (props) {
     return (
@@ -8,10 +8,10 @@ export default function WeatherInfo (props) {
             <button type="button" id="currentLocation">
                 Current Location Weather
             </button>
-            <div id="todayDate">Last Update on <FormattedDate date={props.data.date}/></div>
+            <div id="todayDate"><FormattedDate date={props.data.date} id="date"/></div>
             <h2>
                 {" "}
-                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png" alt="Weather Icon"></img>
+                <img src={props.data.iconUrl} alt="SheCodes API icons" id="todayIcon"/>
                 <br />
                 <span id="todayTemp">{props.data.temperature}</span>
                 °C
