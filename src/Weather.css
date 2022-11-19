@@ -59,12 +59,13 @@ h2 {
 
 h6 {
     padding: 20px;
+    font-size: 20px;
 }
 
 footer {
     color: rgba(0, 0, 0, 0.558);
     margin: 10px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .Form {
@@ -78,6 +79,10 @@ footer {
     background: rgba(0, 0, 0, 0.066);
     padding: 10px;
     border-radius: 10px;
+}
+.WeatherInfo h2 p {
+    text-transform: capitalize;
+    font-size: 30px;
 }
 
 .Loading h2 {

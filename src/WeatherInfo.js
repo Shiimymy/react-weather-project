@@ -12,7 +12,7 @@ export default function WeatherInfo (props) {
             <h2>
                 {" "}
                 <img src={props.data.iconUrl} alt="SheCodes API icons" id="todayIcon"/>
-                <br />
+                <p>{props.data.description}</p>
                 <span id="todayTemp">{props.data.temperature}</span>
                 °C
             </h2>
