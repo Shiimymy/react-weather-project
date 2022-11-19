@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import axios from "axios";
 import "./Weather.css";
-import FormattedDate from "./FormattedDate.js"
+import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props){
     const [weatherData, setWeatherData] = useState({ready:false});
+    const [city, setCity] = useState(props.defaultCity);
     function handleResponse (response){
         setWeatherData ({
             ready : true,
@@ -18,18 +19,33 @@ export default function Weather(props){
         })
     }
 
+    function search () {
+        const apiKey = "db2a1fdd3dct42bo026cc4d34a4f22cb";
+        let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(handleResponse);
+    }
+
+    function handleSubmit (event) {
+        event.preventDefault();
+        search();
+    }
+
+    function handleCityChange (event) {
+        setCity(event.target.value);
+    }
+
     if (weatherData.ready) {
         return (
             <div className="Weather">
                 <div className="Form">
-                    <div>
-                        <form id="search-form">
+                        <form id="search-form" onSubmit={handleSubmit}>
                         <input
                             type="search"
                             name="location"
                             id="cityName"
                             required
                             placeholder="New City ..."
+                            onChange={handleCityChange}
                         />
                         <button type="submit" id="submit">
                             <svg
@@ -45,32 +61,12 @@ export default function Weather(props){
                             Change
                         </button>
                         </form>
-                    </div>
                 </div>
-                <div className="Header">
-                    <h1> {weatherData.city} </h1>
-                    <button type="button" id="currentLocation">
-                        Current Location Weather
-                    </button>
-                    <div id="todayDate">Last Update on <FormattedDate date={weatherData.date}/></div>
-                    <h2>
-                        {" "}
-                        <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png" alt="Weather Icon"></img>
-                        <br />
-                        <span id="todayTemp">{weatherData.temperature}</span>
-                        °C
-                    </h2>
-                    <h6>
-                        Humidity : <span id="humidity">{weatherData.humidity}</span> % | Wind :{" "}
-                        <span id="wind">{weatherData.wind}</span> km/h
-                    </h6>
-                </div>
+                <WeatherInfo data={weatherData}/>
             </div>
-        );
+        )
     } else {
-        const apiKey = "db2a1fdd3dct42bo026cc4d34a4f22cb";
-        let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
-        axios.get(apiUrl).then(handleResponse);
+        search();
         return (
             <div className="Loading">
             <div className="Form">
