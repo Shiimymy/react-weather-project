@@ -19,7 +19,7 @@ export default function WeatherTemperature(props){
             <span className="unit">
                 °C
             </span> |  <span className="unit">
-                <a href="/" onClick={convertToFahrenheit}>°F</a>
+                <a href="/" className="infoLinks" onClick={convertToFahrenheit}>°F</a>
             </span>
         </span>
     );
@@ -30,7 +30,7 @@ export default function WeatherTemperature(props){
         <span id="todayTemp">
             {Math.round(fahrenheit)}
             <span className="unit">
-                <a href="/" onClick={convertToCelsius}>°C</a>
+                <a href="/" className="infoLinks" onClick={convertToCelsius}>°C</a>
             </span> |  <span className="unit">
                 °F
             </span>
