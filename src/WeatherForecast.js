@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherForecastDay from "./WeatherForecastDay"
 import "./WeatherForecast.css"; 
@@ -6,6 +6,10 @@ import "./WeatherForecast.css";
 export default function WeatherForecast(props) {
     let [loaded, setLoaded] = useState(false);
     let [forecast, setForecast] = useState(null);
+
+    useEffect(() => {
+        setLoaded(false);
+    }, [props.city]);
 
     function handleResponse (response) {
         setForecast(response.data.daily);
@@ -16,44 +20,19 @@ export default function WeatherForecast(props) {
         console.log(forecast);
         return (
         <div className="WeatherForecast">
-        <div className="container text-center">
-            <div className="row">
-            <div className="col-md">
-            <WeatherForecastDay data={forecast[0]}/>
-            </div>
-            <div className="col-md">
-                <p className="day">{forecast[1].time}</p>
-                <p className="temperature">
-                {Math.round(forecast[1].temperature.minimum)}°/<span className="afternoon">{Math.round(forecast[1].temperature.maximum)}</span>°C
-                </p>
-                <p className="emojiDay">☀️</p>
-            </div>
-            <div className="col-md">
-                <p className="day">{forecast[2].time}</p>
-                <p className="temperature">
-                {" "}
-                {Math.round(forecast[2].temperature.minimum)}°/<span className="afternoon">{Math.round(forecast[2].temperature.maximum)}</span>°C
-                </p>
-                <p className="emojiDay">☁️</p>
-            </div>
-            <div className="col-md">
-                <p className="day">{forecast[3].time}</p>
-                <p className="temperature">
-                {" "}
-                {Math.round(forecast[3].temperature.minimum)}°/<span className="afternoon">{Math.round(forecast[3].temperature.maximum)}</span>°C{" "}
-                </p>
-                <p className="emojiDay">⛅</p>
-            </div>
-            <div className="col-md">
-                <p className="day">{forecast[4].time}</p>
-                <p className="temperature">
-                {" "}
-                {Math.round(forecast[4].temperature.minimum)}°/<span className="afternoon">{Math.round(forecast[4].temperature.maximum)}</span>°C
-                </p>
-                <p className="emojiDay">⛅</p>
-            </div>
-            </div>
-        </div>
+            <div className="container text-center">
+                <div className="row">
+                    {forecast.map(function(dailyForecast, index) {
+                        if (index < 5) {
+                        return (
+                            <div className="col-md" key={index}>
+                            <WeatherForecastDay data={dailyForecast}/>
+                            </div>
+                        );
+                        }
+                    })}
+                </div>
+            </div>   
         </div>
         )
     } else {

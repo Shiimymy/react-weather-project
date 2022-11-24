@@ -97,7 +97,7 @@ export default function Weather(props){
                         </form>
                     </div>
                 </div>
-            <h2>Loading ...</h2>
+            <h2>Loading ... Please wait</h2>
             </div>
         )
     }
