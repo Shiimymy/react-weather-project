@@ -1,14 +1,11 @@
 import React from "react";
-import FormattedDate from "./FormattedDate.js";
-import WeatherTemperature from "./WeatherTemperature.js"
+import FormattedDate from "./FormattedDate";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherInfo (props) {
     return (
         <div className="WeatherInfo">
             <h1> {props.data.city} </h1>
-            <button type="button" id="currentLocation">
-                Current Location Weather
-            </button>
             <div id="todayDate"><FormattedDate date={props.data.date} id="date"/></div>
             <h2>
                 {" "}
